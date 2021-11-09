@@ -64,6 +64,45 @@ namespace CSharp.Concepts
             EmployeeService es = new EmployeeService();
             Console.WriteLine(es.CalculateHoursWorked());
 
+            StringDataStore strStore = new StringDataStore();
+
+            //strStore[0] = "One";
+            //strStore[1] = "Two";
+            //strStore[2] = "Three";
+            //strStore[3] = "Four";
+
+            strStore[0] = 899;
+            strStore[1] = 900;
+            strStore[2] = 901;
+            strStore[3] = 902;
+
+            for (int i = 0; i < 10; i++)
+                Console.WriteLine(strStore[i]);
+
+        }
+    }
+
+    class StringDataStore
+    {
+        private int[] strArr = new int[10]; // internal data storage
+
+        public int this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= strArr.Length)
+                    throw new IndexOutOfRangeException("Index out of range");
+
+                return strArr[index];
+            }
+
+            set
+            {
+                if (index < 0 || index >= strArr.Length)
+                    throw new IndexOutOfRangeException("Index out of range");
+
+                strArr[index] = value;
+            }
         }
     }
 
